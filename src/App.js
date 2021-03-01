@@ -1,59 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 const playerCharacters = [
   {
-    id: 0,
+    id: "mistrz",
     name: "Mistrz Podziemi",
     thumb: "./assets/0.png"
   },
   {
-    id: 1,
+    id: "andrej",
     name: "Andrej",
     thumb: "./assets/1.png"
   },
   {
-    id: 2,
+    id: "bum",
     name: "Büm",
     thumb: "./assets/2.png"
   },
   {
-    id: 3,
+    id: "mokrun",
     name: "Mokrun",
     thumb: "./assets/3.png"
   },
   {
-    id: 4,
+    id: "logic11",
     name: "Logic-11",
     thumb: "./assets/4.png"
   },
   {
-    id: 5,
+    id: "bafango",
     name: "Bafango",
     thumb: "./assets/5.png"
   },
   {
-    id: 6,
+    id: "aurelia",
     name: "Aurelia",
     thumb: "./assets/6.png"
   },
 ]
 
 function App() {
+  const [characters, updateCharacters] = useState(playerCharacters);
+
+  function handleOnDragEnd(result) {
+    if (!result.destination) return;
+
+    const items = Array.from(characters);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    updateCharacters(items);
+  }
+
   return (
-    <div className="app">
+    <div className="App">
       <header>
         <h1>HGSS RPG Initiative Tracker</h1>
-        <DragDropContext>
+        <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="characters">
             {(provided) => (
               <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
-                {playerCharacters.map(({ id, name, thumb }, index) => {
+                {characters.map(({id, name, thumb}, index) => {
                   return (
                     <Draggable key={id} draggableId={id} index={index}>
                       {(provided) => (
-                        <li>
+                        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                           <div className="characters-thumb">
                             <img src={thumb} alt={`${name} Thumb`} />
                           </div>
@@ -65,6 +77,7 @@ function App() {
                     </Draggable>
                   );
                 })}
+                {provided.placeholder}
               </ul>
             )}
           </Droppable>

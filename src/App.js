@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './App.css';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import './App.css';
 
 const playerCharacters = [
   {
@@ -37,7 +37,7 @@ const playerCharacters = [
     id: "aurelia",
     name: "Aurelia",
     thumb: "./assets/6.png"
-  },
+  }
 ]
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
+      <header className="App-header">
         <h1>HGSS RPG Initiative Tracker</h1>
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="characters">

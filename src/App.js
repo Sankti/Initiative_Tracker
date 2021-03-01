@@ -9,32 +9,32 @@ const playerCharacters = [
   },
   {
     id: 1,
-    name: "Mistrz Podziemi",
+    name: "Andrej",
     thumb: "./assets/1.png"
   },
   {
     id: 2,
-    name: "Mistrz Podziemi",
+    name: "Büm",
     thumb: "./assets/2.png"
   },
   {
     id: 3,
-    name: "Mistrz Podziemi",
+    name: "Mokrun",
     thumb: "./assets/3.png"
   },
   {
     id: 4,
-    name: "Mistrz Podziemi",
+    name: "Logic-11",
     thumb: "./assets/4.png"
   },
   {
     id: 5,
-    name: "Mistrz Podziemi",
+    name: "Bafango",
     thumb: "./assets/5.png"
   },
   {
     id: 6,
-    name: "Mistrz Podziemi",
+    name: "Aurelia",
     thumb: "./assets/6.png"
   },
 ]
@@ -44,6 +44,20 @@ function App() {
     <div className="app">
       <header>
         <h1>HGSS RPG Initiative Tracker</h1>
+        <ul className="characters">
+          {playerCharacters.map(({ id, name, thumb }) => {
+            return (
+              <li key={id}>
+                <div className="characters-thumb">
+                  <img src={thumb} alt={`${name} Thumb`} />
+                </div>
+                <p>
+                  { name }
+                </p>
+              </li>
+            );
+          })}
+        </ul>
       </header>
     </div>
   );

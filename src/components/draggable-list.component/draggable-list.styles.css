@@ -1,16 +1,3 @@
-html {
-  text-align: center;
-  background: rgb(174, 192, 215);
-  background: radial-gradient(
-    circle,
-    rgba(174, 192, 215, 1) 0%,
-    rgba(8, 10, 34, 1) 100%
-  );
-  height: 100%;
-  font-family: "Gill Sans Extrabold", Helvetica, sans-serif;
-  color: white;
-}
-
 .characters {
   list-style: none;
   padding-left: 0;

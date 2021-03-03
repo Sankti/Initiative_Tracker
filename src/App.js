@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import DraggableList from './components/draggable-list.component/draggable-list.component'
+import DraggableList from './components/draggable-list.component/draggable-list.component';
 
 function App() {
   return (
